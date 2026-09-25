@@ -1,6 +1,6 @@
 import type { Category, Product, ProductColor, ProductFaq, SiteRoute } from '@/types'
 
-const fabricImages = ['/fabrics/hero.jpg', '/fabrics/rose.jpg', '/fabrics/blue.jpg', '/fabrics/emerald.jpg']
+const fabricImages = ['fabrics/hero.jpg', 'fabrics/rose.jpg', 'fabrics/blue.jpg', 'fabrics/emerald.jpg']
 
 const color = (id: string, name: string, hex: string, stockMeters = 12): ProductColor => ({
   id,
@@ -23,7 +23,7 @@ export const fallbackCategories: Category[] = [
     slug: 'embroidered',
     name: 'مطرز',
     description: 'تطريز بارز وخيوط فاخرة',
-    image: '/fabrics/rose.jpg',
+    image: 'fabrics/rose.jpg',
     accent: '#8f4766',
   },
   {
@@ -31,7 +31,7 @@ export const fallbackCategories: Category[] = [
     slug: 'plain',
     name: 'سادة',
     description: 'ألوان هادئة للاستخدام اليومي',
-    image: '/fabrics/blue.jpg',
+    image: 'fabrics/blue.jpg',
     accent: '#42647b',
   },
   {
@@ -39,7 +39,7 @@ export const fallbackCategories: Category[] = [
     slug: 'stretch',
     name: 'مطاطي',
     description: 'سبانديكس وتويل بمرونة مريحة',
-    image: '/fabrics/emerald.jpg',
+    image: 'fabrics/emerald.jpg',
     accent: '#34715e',
   },
   {
@@ -47,7 +47,7 @@ export const fallbackCategories: Category[] = [
     slug: 'sequined',
     name: 'ترتر ولمّاع',
     description: 'بريق وحركة للحفلات',
-    image: '/fabrics/hero.jpg',
+    image: 'fabrics/hero.jpg',
     accent: '#a13d75',
   },
   {
@@ -55,7 +55,7 @@ export const fallbackCategories: Category[] = [
     slug: 'patterned',
     name: 'مزخرف',
     description: 'نقوش جاكار وتطريز منظم',
-    image: '/fabrics/rose.jpg',
+    image: 'fabrics/rose.jpg',
     accent: '#8c5c82',
   },
 ]
@@ -69,8 +69,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'stretch',
     description: 'كريب مرن بملمس ناعم ومطفأ، يتمدد في الاتجاهين ويعيد شكله بسهولة. مناسب للفساتين المحتشمة والأبراق والقطع التي تحتاج راحة طوال اليوم.',
     price: 7500,
-    image: '/fabrics/emerald.jpg',
-    images: ['/fabrics/emerald.jpg', '/fabrics/blue.jpg', '/fabrics/hero.jpg'],
+    image: 'fabrics/emerald.jpg',
+    images: ['fabrics/emerald.jpg', 'fabrics/blue.jpg', 'fabrics/hero.jpg'],
     colors: [
       color('black', 'أسود', '#171717'),
       color('wine', 'خمري', '#681d35'),
@@ -103,8 +103,8 @@ export const fallbackProducts: Product[] = [
     description: 'تافتا فاخرة بتطريز ذهبي بارز ونسيج محكم. تمنح المناسبات والعباءات ثباتاً واضحاً ولمعة هادئة تحت الإضاءة.',
     price: 18000,
     compareAtPrice: 19500,
-    image: '/fabrics/rose.jpg',
-    images: ['/fabrics/rose.jpg', '/fabrics/hero.jpg', '/fabrics/blue.jpg'],
+    image: 'fabrics/rose.jpg',
+    images: ['fabrics/rose.jpg', 'fabrics/hero.jpg', 'fabrics/blue.jpg'],
     colors: [
       color('black-gold', 'أسود ذهبي', '#1d1b15'),
       color('red-gold', 'أحمر ذهبي', '#7d2525'),
@@ -135,8 +135,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'sequined',
     description: 'ترتر متعدد الألوان يغيّر انعكاسه مع الحركة. مثالي لتضيف بريقاً واضحاً إلى فساتين الحفلات وتفاصيل السهرة.',
     price: 12500,
-    image: '/fabrics/hero.jpg',
-    images: ['/fabrics/hero.jpg', '/fabrics/blue.jpg', '/fabrics/rose.jpg'],
+    image: 'fabrics/hero.jpg',
+    images: ['fabrics/hero.jpg', 'fabrics/blue.jpg', 'fabrics/rose.jpg'],
     colors: [
       color('silver', 'فضي', '#c5c7ca', 4),
       color('gold', 'ذهبي', '#d4ad3b', 2),
@@ -167,8 +167,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'plain',
     description: 'مزيج طبيعي يتنفس ويمنح إطلالة يومية هادئة. مناسب للفساتين الصيفية والقمصان مع سهولة في الثني والتنسيق.',
     price: 8500,
-    image: '/fabrics/blue.jpg',
-    images: ['/fabrics/blue.jpg', '/fabrics/rose.jpg', '/fabrics/emerald.jpg'],
+    image: 'fabrics/blue.jpg',
+    images: ['fabrics/blue.jpg', 'fabrics/rose.jpg', 'fabrics/emerald.jpg'],
     colors: [
       color('beige', 'بيج', '#d1b695'),
       color('white', 'أبيض', '#f4f0e9'),
@@ -200,8 +200,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'stretch',
     description: 'تويل مرن بوزن متوسط وحواف نظيفة. يمنح البنطلونات والتنانير المحتشمة قواماً منظماً مع سهولة في الخياطة.',
     price: 9000,
-    image: '/fabrics/blue.jpg',
-    images: ['/fabrics/blue.jpg', '/fabrics/hero.jpg', '/fabrics/emerald.jpg'],
+    image: 'fabrics/blue.jpg',
+    images: ['fabrics/blue.jpg', 'fabrics/hero.jpg', 'fabrics/emerald.jpg'],
     colors: [
       color('black', 'أسود', '#0c0c0d'),
       color('camel', 'كاميل', '#bd9769'),
@@ -233,8 +233,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'patterned',
     description: 'جاكار بنقوش محبوكة وعمق بصري واضح. يعطي القطع الرسمية حضوراً خاصاً من دون أن يحتاج إلى تفاصيل إضافية كثيرة.',
     price: 15000,
-    image: '/fabrics/rose.jpg',
-    images: ['/fabrics/rose.jpg', '/fabrics/blue.jpg', '/fabrics/hero.jpg'],
+    image: 'fabrics/rose.jpg',
+    images: ['fabrics/rose.jpg', 'fabrics/blue.jpg', 'fabrics/hero.jpg'],
     colors: [
       color('white-gold', 'أبيض ذهبي', '#efe6cf'),
       color('blush', 'وردي ناعم', '#e6c6cc'),
@@ -266,8 +266,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'plain',
     description: 'ساتان بلمعة مضبوطة وانسدال ناعم. خيار متوازن بين الفخامة وسهولة الاستخدام في المناسبات والفساتين المسائية.',
     price: 6900,
-    image: '/fabrics/hero.jpg',
-    images: ['/fabrics/hero.jpg', '/fabrics/rose.jpg', '/fabrics/blue.jpg'],
+    image: 'fabrics/hero.jpg',
+    images: ['fabrics/hero.jpg', 'fabrics/rose.jpg', 'fabrics/blue.jpg'],
     colors: [
       color('emerald', 'زمردي', '#1c6c55'),
       color('plum', 'برقوقي', '#57324f'),
@@ -298,8 +298,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'embroidered',
     description: 'كريب خفيف بتطريز هندسي دقيق يترك مساحة واسعة للتصميم. مناسب للفساتين اليومية المميزة والقطع القريبة من ذوقك.',
     price: 11200,
-    image: '/fabrics/rose.jpg',
-    images: ['/fabrics/rose.jpg', '/fabrics/emerald.jpg', '/fabrics/hero.jpg'],
+    image: 'fabrics/rose.jpg',
+    images: ['fabrics/rose.jpg', 'fabrics/emerald.jpg', 'fabrics/hero.jpg'],
     colors: [
       color('plum', 'برقوقي', '#613c5b'),
       color('rose', 'وردي غباري', '#c49a9d'),
@@ -330,8 +330,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'plain',
     description: 'تويل قطني بلون محايد وبنية واضحة. يتحمل الاستخدام المتكرر ويمنح البناطيل والقطع اليومية مظهراً نظيفاً.',
     price: 9900,
-    image: '/fabrics/blue.jpg',
-    images: ['/fabrics/blue.jpg', '/fabrics/hero.jpg', '/fabrics/rose.jpg'],
+    image: 'fabrics/blue.jpg',
+    images: ['fabrics/blue.jpg', 'fabrics/hero.jpg', 'fabrics/rose.jpg'],
     colors: [
       color('sand', 'رملي', '#c8ad86'),
       color('stone', 'حجري', '#a59b8f'),
@@ -362,8 +362,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'plain',
     description: 'مخمل بويبة ناعمة وعمق لوني واضح. مناسب للجاكيتات والفساتين التي تحتاج إلى حضور دافئ ومترف.',
     price: 14200,
-    image: '/fabrics/blue.jpg',
-    images: ['/fabrics/blue.jpg', '/fabrics/hero.jpg', '/fabrics/rose.jpg'],
+    image: 'fabrics/blue.jpg',
+    images: ['fabrics/blue.jpg', 'fabrics/hero.jpg', 'fabrics/rose.jpg'],
     colors: [
       color('cobalt', 'أزرق كوبالت', '#244c82'),
       color('wine', 'خمري', '#61283b'),
@@ -394,8 +394,8 @@ export const fallbackProducts: Product[] = [
     categoryId: 'plain',
     description: 'نسيج متوازن فيه ملمس اللينن وهشاشة قطن قابلة للتنفس. لون مريمي هادئ للمناسبات الصيفية البسيطة.',
     price: 10500,
-    image: '/fabrics/emerald.jpg',
-    images: ['/fabrics/emerald.jpg', '/fabrics/blue.jpg', '/fabrics/rose.jpg'],
+    image: 'fabrics/emerald.jpg',
+    images: ['fabrics/emerald.jpg', 'fabrics/blue.jpg', 'fabrics/rose.jpg'],
     colors: [
       color('sage', 'أخضر مريمي', '#87977e'),
       color('oat', 'شوفان', '#d1c1a7'),

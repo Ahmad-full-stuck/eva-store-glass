@@ -133,7 +133,7 @@ export function ProductCard({ product, wished, onWish, onAdd }: ProductCardProps
               const node = event.currentTarget
               if (node.dataset.fallback === '1') return
               node.dataset.fallback = '1'
-              node.src = '/fabrics/hero.jpg'
+              node.src = 'fabrics/hero.jpg'
             }}
           />
         </Link>

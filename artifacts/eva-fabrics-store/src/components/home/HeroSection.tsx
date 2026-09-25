@@ -41,7 +41,7 @@ export function HeroSection({ products, categories }: HeroSectionProps) {
           <div className="hero-note"><span className="note-dot" />توصيل إلى جميع محافظات العراق <span className="note-divider" /> دفع عند استلام الطلب</div>
         </div>
         <div className="hero-visual">
-          <img src="/fabrics/hero.jpg" alt="نماذج من أقمشة إيفا ستور" />
+          <img src="fabrics/hero.jpg" alt="نماذج من أقمشة إيفا ستور" />
           <div className="hero-visual-overlay" />
           <div className="hero-vertical-label" aria-hidden="true">EVA · FABRICS</div>
         </div>

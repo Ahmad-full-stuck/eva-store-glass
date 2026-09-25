@@ -96,7 +96,7 @@ export function HomePage({ products, categories, wishlist, onWish, onAdd }: Home
       </section>
 
       <section className="container-eva section-block story-section" aria-label="قصة العلامة">
-        <div className="story-visual"><img src="/fabrics/blue.jpg" alt="تفاصيل نسيج أزرق من معرض إيفا" loading="lazy" /><span>Since<br /><strong>Eva</strong></span></div>
+        <div className="story-visual"><img src="fabrics/blue.jpg" alt="تفاصيل نسيج أزرق من معرض إيفا" loading="lazy" /><span>Since<br /><strong>Eva</strong></span></div>
         <div className="story-copy"><span className="eyebrow">قصة العلامة</span><h2>{homeStory.title}</h2><p>{homeStory.text}</p><p>نصمم تجربتنا لتكون قريبة منك: صور واضحة، مواصفات مفهومة، وخدمة تساعدك قبل الطلب وبعده.</p><Link href="/about" className="button button-outline">اعرفي أكثر عن إيفا <ArrowLeft size={16} /></Link></div>
       </section>
 

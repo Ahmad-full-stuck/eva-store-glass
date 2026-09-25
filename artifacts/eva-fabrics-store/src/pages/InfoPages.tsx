@@ -354,8 +354,8 @@ export function AboutPage() {
             </div>
           </div>
           <div className="about-collage">
-            <img src="/fabrics/rose.jpg" alt="قماش مطرز من معرض إيفا" />
-            <img src="/fabrics/blue.jpg" alt="قماش أزرق ناعم" />
+            <img src="fabrics/rose.jpg" alt="قماش مطرز من معرض إيفا" />
+            <img src="fabrics/blue.jpg" alt="قماش أزرق ناعم" />
             <span>EVA<br /><strong>FABRICS</strong></span>
           </div>
         </section>
