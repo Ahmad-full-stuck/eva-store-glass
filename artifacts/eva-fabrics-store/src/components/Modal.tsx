@@ -12,16 +12,37 @@ interface ModalProps {
 export function Modal({ open, onClose, title, children, variant = 'center', className = '' }: ModalProps) {
   const titleId = useId()
   const panelRef = useRef<HTMLDivElement>(null)
+  const onCloseRef = useRef(onClose)
+  const restoreRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    onCloseRef.current = onClose
+  }, [onClose])
+
+  useEffect(() => {
+    const handleFocusIn = (event: FocusEvent) => {
+      const target = event.target
+      if (!(target instanceof HTMLElement)) return
+      if (target.closest('.modal-layer')) return
+      restoreRef.current = target
+    }
+    document.addEventListener('focusin', handleFocusIn)
+    return () => document.removeEventListener('focusin', handleFocusIn)
+  }, [])
 
   useEffect(() => {
     if (!open) return undefined
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    const focusPanel = window.requestAnimationFrame(() => panelRef.current?.focus())
+    const focusFrame = window.requestAnimationFrame(() => {
+      const panel = panelRef.current
+      if (!panel || panel.contains(document.activeElement)) return
+      panel.focus()
+    })
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault()
-        onClose()
+        onCloseRef.current()
         return
       }
       if (event.key !== 'Tab' || !panelRef.current) return
@@ -39,11 +60,15 @@ export function Modal({ open, onClose, title, children, variant = 'center', clas
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => {
-      window.cancelAnimationFrame(focusPanel)
+      window.cancelAnimationFrame(focusFrame)
       document.body.style.overflow = previousOverflow
       document.removeEventListener('keydown', handleKeyDown)
+      const target = restoreRef.current
+      if (target && document.contains(target)) {
+        window.requestAnimationFrame(() => target.focus())
+      }
     }
-  }, [onClose, open])
+  }, [open])
 
   if (!open) return null
 

@@ -1,9 +1,15 @@
 import { useState } from 'react'
-import { ArrowLeft, ArrowRight, BadgeCheck, ChevronDown, Globe2, MessageCircle, Sparkles, Truck } from 'lucide-react'
+import { ArrowLeft, BadgeCheck, ChevronDown, Globe2, MessageCircle, Sparkles, Truck } from 'lucide-react'
 import { Link } from 'wouter'
 import type { Category, Product, ProductColor } from '@/types'
 import { guideQuestions, homeStory, trustItems } from '@/lib/fallback-data'
 import { ProductCard } from '@/components/ProductCard'
+import { HeroSection } from '@/components/home/HeroSection'
+import { NewsletterSection } from '@/components/home/NewsletterSection'
+import { PromoBar } from '@/components/home/PromoBar'
+import { SectionHeading } from '@/components/home/SectionHeading'
+import { StepsSection } from '@/components/home/StepsSection'
+import { TestimonialsSection } from '@/components/home/TestimonialsSection'
 
 interface HomePageProps {
   products: Product[]
@@ -47,23 +53,13 @@ export function HomePage({ products, categories, wishlist, onWish, onAdd }: Home
 
   return (
     <main>
-      <section className="home-hero container-eva">
-        <div className="hero-copy">
-          <span className="eyebrow"><Sparkles size={14} />معرض أقمشة عربي</span>
-          <h1>اختاري <span>القماش المثالي</span><br />لكل إبداع</h1>
-          <p>تشكيلة منتقاة من الأقمشة الفاخرة والمريحة، مع شرح واضح للخامة قبل أن تضيفيها إلى مشروعك.</p>
-          <div className="hero-actions"><Link href="/catalog" className="button button-primary">تصفحي الأقمشة <ArrowLeft size={16} /></Link><Link href="/catalog?sort=newest" className="button button-outline">اكتشفي الجديد <ArrowRight size={16} /></Link></div>
-          <div className="hero-note"><span className="note-dot" />توصيل إلى جميع محافظات العراق <span className="note-divider" /> دفع عند استلام الطلب</div>
-        </div>
-        <div className="hero-visual">
-          <img src="/fabrics/hero.jpg" alt="نماذج من أقمشة إيفا ستور" />
-          <div className="hero-visual-overlay" />
-          <div className="hero-floating-card"><span>تشكيلة مختارة</span><strong>+١٣٩</strong><small>صنفاً متنوعاً</small></div>
-          <div className="hero-vertical-label">EVA · FABRICS</div>
-        </div>
-      </section>
+      <HeroSection products={products} categories={categories} />
 
-      <section className="container-eva section-block category-section">
+      <PromoBar />
+
+      <StepsSection />
+
+      <section className="container-eva section-block category-section" aria-label="أقسام المعرض">
         <SectionHeading eyebrow="اختاري من البداية" title="مساحات القماش" linkLabel="عرض كل الأقمشة" linkHref="/catalog" />
         <div className="category-grid">
           {categories.map((category) => <Link key={category.id} href={`/catalog?category=${encodeURIComponent(category.id)}`} className="category-card">
@@ -71,6 +67,13 @@ export function HomePage({ products, categories, wishlist, onWish, onAdd }: Home
             <span className="category-shade" />
             <span className="category-copy"><small>{category.description}</small><strong>{category.name}</strong><b>اكتشفي <ArrowLeft size={14} /></b></span>
           </Link>)}
+        </div>
+      </section>
+
+      <section className="container-eva section-block new-section" aria-label="وصل حديثاً">
+        <SectionHeading eyebrow="نماذج مختارة" title="وصل حديثاً" description="أحدث الخامات التي أضفناها إلى المعرض" linkLabel="كل العينات" linkHref="/catalog?sort=newest" />
+        <div className="glass" style={{ padding: 'clamp(14px, 2.5vw, 28px)' }}>
+          <div className="product-grid">{recentProducts.map((product) => <ProductCard key={product.id} product={product} wished={wishlist.includes(product.slug)} onWish={onWish} onAdd={onAdd} />)}</div>
         </div>
       </section>
 
@@ -85,28 +88,23 @@ export function HomePage({ products, categories, wishlist, onWish, onAdd }: Home
         </div>
       </section>
 
-      <section className="container-eva section-block new-section">
-        <SectionHeading eyebrow="نماذج مختارة" title="وصل حديثاً" description="أحدث الخامات التي أضفناها إلى المعرض" linkLabel="كل العينات" linkHref="/catalog?sort=newest" />
-        <div className="product-grid">{recentProducts.map((product) => <ProductCard key={product.id} product={product} wished={wishlist.includes(product.slug)} onWish={onWish} onAdd={onAdd} />)}</div>
-      </section>
-
       <section className="guide-preview-section">
         <div className="container-eva guide-preview-grid">
           <div className="guide-preview-copy"><span className="eyebrow"><BadgeCheck size={14} />قبل أن تختاري</span><h2>القماش قرار بصري<br />ولمسي في آن واحد.</h2><p>العينة الجيدة لا تخفي التفاصيل. قارني السماكة والمرونة واللمعة وطريقة سقوط القماش قبل أن تحددي الاستخدام.</p><Link href="/fabric-guide" className="button button-light">ابدئي دليل الأقمشة <ArrowLeft size={16} /></Link></div>
-          <div className="guide-faq-list">{guideQuestions.slice(0, 4).map((item, index) => <div className={`guide-faq ${openFaq === index ? 'is-open' : ''}`} key={item.question}><button type="button" onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index}><span>سؤال {index + 1}</span><strong>{item.question}</strong><ChevronDown size={17} /></button>{openFaq === index && <p>{item.answer}</p>}</div>)}</div>
+          <div className="guide-faq-list glass-dark">{guideQuestions.slice(0, 4).map((item, index) => <div className={`guide-faq ${openFaq === index ? 'is-open' : ''}`} key={item.question}><button type="button" onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index}><span>سؤال {index + 1}</span><strong>{item.question}</strong><ChevronDown size={17} /></button>{openFaq === index && <p>{item.answer}</p>}</div>)}</div>
         </div>
       </section>
 
-      <section className="container-eva section-block story-section">
-        <div className="story-visual"><img src="/fabrics/blue.jpg" alt="تفاصيل نسيج أزرق من معرض إيفا" /><span>Since<br /><strong>Eva</strong></span></div>
+      <section className="container-eva section-block story-section" aria-label="قصة العلامة">
+        <div className="story-visual"><img src="/fabrics/blue.jpg" alt="تفاصيل نسيج أزرق من معرض إيفا" loading="lazy" /><span>Since<br /><strong>Eva</strong></span></div>
         <div className="story-copy"><span className="eyebrow">قصة العلامة</span><h2>{homeStory.title}</h2><p>{homeStory.text}</p><p>نصمم تجربتنا لتكون قريبة منك: صور واضحة، مواصفات مفهومة، وخدمة تساعدك قبل الطلب وبعده.</p><Link href="/about" className="button button-outline">اعرفي أكثر عن إيفا <ArrowLeft size={16} /></Link></div>
       </section>
 
-      <section className="trust-section"><div className="container-eva trust-grid">{trustItems.map((item) => <div className="trust-item" key={item.title}>{item.icon === 'truck' ? <Truck /> : item.icon === 'globe' ? <Globe2 /> : item.icon === 'message' ? <MessageCircle /> : <BadgeCheck />}<strong>{item.title}</strong><span>{item.description}</span></div>)}</div></section>
+      <section className="trust-section" aria-label="ضمانات المتجر"><div className="container-eva trust-grid">{trustItems.map((item) => <div className="trust-item" key={item.title}>{item.icon === 'truck' ? <Truck /> : item.icon === 'globe' ? <Globe2 /> : item.icon === 'message' ? <MessageCircle /> : <BadgeCheck />}<strong>{item.title}</strong><span>{item.description}</span></div>)}</div></section>
+
+      <TestimonialsSection />
+
+      <NewsletterSection />
     </main>
   )
-}
-
-function SectionHeading({ eyebrow, title, description, linkLabel, linkHref }: { eyebrow: string; title: string; description?: string; linkLabel: string; linkHref: string }) {
-  return <div className="section-heading"><div><span className="eyebrow">{eyebrow}</span><h2>{title}</h2>{description && <p>{description}</p>}</div><Link href={linkHref} className="underlined-link">{linkLabel} <ArrowLeft size={15} /></Link></div>
 }
